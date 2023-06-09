@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>Diabetes prediction</title>
+
+    <!-- CSS  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ysabeau&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <style>
+        body {
+            background-image: url('../static/image/health.png');
+            background-repeat: no-repeat;
+            background-size: 15%;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        #index-banner{
+            margin-left: 10%;
+            margin-right: 10%;
+        } 
+        h5{
+            font-weight: 600;
+            text-decoration: underline;
+            color: #012a33;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        h6{
+            font-size: 20px;
+            font-weight: 600;
+            color: #330c0a;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        p{
+            font-size: 18px;
+            font-family: 'Ysabeau', sans-serif;
+        }
+        ol li{
+            font-size: 18px;
+            font-family: 'Ysabeau', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="red.lighten-2" role="navigation">
+        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Diabetes Prediction</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                <li><a href="{{url_for('pres')}}">Medicines & Treatments</a></li>
+                <li><a href="{{url_for('diet')}}">Diet & Exercise</a></li>
+            </ul>
+    </nav>
+
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <!-- <h5 style="text-align: center; color: brown; font-weight: 600;"></h5> -->
+            <h3 style="font-family: 'Cormorant Garamond', serif;" class="header center orange-text">Diabetes Diet, Eating, & Physical Activity</h3>
+        </div>
+
+        <div>
+            <br>
+            <p>
+                Nutrition and physical activity are important parts of a healthy lifestyle when you have diabetes. 
+                Along with other benefits, following a healthy meal plan and being active can help you keep your blood glucose level, 
+                also called blood sugar, in your target range. To manage your blood glucose, you need to balance what you eat and 
+                drink with physical activity and diabetes medicine, if you take any. What you choose to eat, how much you eat, 
+                and when you eat are all important in keeping your blood glucose level in the range that your health care team recommends.
+                <br><br>
+                Becoming more active and making changes in what you eat and drink can seem challenging at first. 
+                You may find it easier to start with small changes and get help from your family, friends, and health care team.
+                <br><br>
+                Eating well and being physically active most days of the week can help you
+                <ol style="list-style-type:disc;">
+                    <li>
+                        keep your blood glucose level, blood pressure, and cholesterol in your target ranges
+                    </li>
+                    <li>
+                        lose weight or stay at a healthy weight
+                    </li>
+                    <li>
+                        prevent or delay diabetes problems
+                    </li>
+                    <li>
+                        feel good and have more energy
+                    </li>
+                </ol>
+            </p>
+        </div>
+
+        <div>
+            <h5>What foods can I eat if I have diabetes?</h5>
+            <p>
+                You may worry that having diabetes means going without foods you enjoy. 
+                The good news is that you can still eat your favorite foods, 
+                but you might need to eat smaller portions or enjoy them less often. 
+                Your health care team will help create a diabetes meal plan for you that meets your needs and likes.
+                <br><br>
+                The key to eating with diabetes is to eat a variety of healthy foods from all food groups, in the amounts your meal plan outlines.
+                <br><br>
+                The food groups are:
+                <ol style="list-style-type:disc;">
+                    <li>
+                        <b>vegetables</b>
+                        <ol style="list-style-type:circle;">
+                            <li>
+                                nonstarchy: includes broccoli, carrots, greens, peppers, and tomatoes
+                            </li>
+                            <li>
+                                starchy: includes potatoes, corn, and green peas
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <b>fruits—></b> includes oranges, melon, berries, apples, bananas, and grapes
+                    </li>
+                    <li>
+                        <b>grains—></b> at least half of your grains for the day should be whole grains
+                        <ol style="list-style-type:circle;">
+                            <li>
+                                includes wheat, rice, oats, cornmeal, barley, and quinoa
+                            </li>
+                            <li>
+                                examples: bread, pasta, cereal, and tortillas
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <b>protein</b>
+                        <ol style="list-style-type:circle;">
+                            <li>
+                                lean meat
+                            </li>
+                            <li>
+                                chicken or turkey without the skin
+                            </li>
+                            <li>
+                                fish
+                            </li>
+                            <li>
+                                eggs
+                            </li>
+                            <li>
+                                nuts and peanuts
+                            </li>
+                            <li>
+                                dried beans and certain peas, such as chickpeas and split peas
+                            </li>
+                            <li>
+                                meat substitutes, such as tofu
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <b>dairy—nonfat or low fat</b>
+                        <ol style="list-style-type:circle;">
+                            <li>
+                                milk or lactose-free milk if you have lactose intolerance
+                            </li>
+                            <li>
+                                yogurt
+                            </li>
+                            <li>
+                                cheese
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+
+                <p>
+                    Eat foods with heart-healthy fats, which mainly come from these foods:
+                </p>
+                <ol style="list-style-type:disc;"> 
+                    <li>
+                        oils that are liquid at room temperature, such as canola and olive oil
+                    </li>
+                    <li>
+                        nuts and seeds
+                    </li>
+                    <li>
+                        heart-healthy fish such as salmon, tuna, and mackerel
+                    </li>
+                    <li>
+                        avocado
+                    </li>
+                </ol>
+                <p>
+                    Use oils when cooking food instead of butter, cream, shortening, lard, or stick margarine. 
+                    Choose healthy fats, such as from nuts, seeds, and olive oil.
+                </p>
+            </p>
+        </div>
+
+        <div>
+            <h5>What foods and drinks should I limit if I have diabetes?</h5>
+            <p>
+                Foods and drinks to limit include
+                <ol  style="list-style-type:disc;">
+                    <li>
+                        fried foods and other foods high in saturated fat and trans fat
+                    </li>
+                    <li>
+                        foods high in salt, also called sodium
+                    </li>
+                    <li>
+                        sweets, such as baked goods, candy, and ice cream
+                    </li>
+                    <li>
+                        beverages with added sugars, such as juice, regular soda, and regular sports or energy drinks
+                    </li>
+                </ol>
+                <p>
+                    Drink water instead of sweetened beverages. Consider using a sugar substitute in your coffee or tea.
+                </p>
+                <p>
+                    If you drink alcohol, drink moderately—no more than one drink a day if you’re a woman or two drinks a day if you’re a man. 
+                    If you use insulin or diabetes medicines that increase the amount of insulin your body makes, 
+                    alcohol can make your blood glucose level drop too low. This is especially true if you haven’t eaten in a while. 
+                    It’s best to eat some food when you drink alcohol.
+                </p>
+            </p>
+        </div>
+
+        <div>
+            <h5>When should I eat if I have diabetes?</h5>
+            <p>
+                Some people with diabetes need to eat at about the same time each day. 
+                Others can be more flexible with the timing of their meals. Depending on your diabetes medicines or type of insulin, 
+                you may need to eat the same amount of carbohydrates at the same time each day. 
+                If you take “mealtime” insulin, your eating schedule can be more flexible.
+                <br><br>
+                If you use certain diabetes medicines or insulin and you skip or delay a meal, your blood glucose level can drop too low. 
+                Ask your health care team when you should eat and whether you should eat before and after physical activity.
+            </p>
+        </div>
+
+        <div>
+            <h5>How much can I eat if I have diabetes?</h5>
+            <p>
+                Eating the right amount of food will also help you manage your blood glucose level and your weight. 
+                Your health care team can help you figure out how much food and how many calories you should eat each day.
+            </p>
+            <ol style="list-style-type:none;">
+                <li>
+                    <h6>Weight-loss planning</h6>
+                    <p>
+                        If you are overweight or have obesity, work with your health care team to create a weight-loss plan.
+                        <br><br>
+                        The Body Weight Planner can help you tailor your calorie and physical activity plans to reach and maintain your goal weight.
+                        <br><br>
+                        To lose weight, you need to eat fewer calories and replace less healthy foods with foods lower in calories, fat, and sugar.
+                        <br><br>
+                        If you have diabetes, are overweight or obese, and are planning to have a baby, you should try to lose any excess weight before you become pregnant. 
+                        Learn more about planning for pregnancy if you have diabetes.
+                    </p>
+                </li>
+                <li>
+                    <h6>Meal plan methods</h6>
+                    <p>
+                        Two common ways to help you plan how much to eat if you have diabetes are the plate method and carbohydrate counting, 
+                        also called carb counting. Check with your health care team about the method that’s best for you.
+                    </p>
+                    <ol style="list-style-type:none;">
+                        <li>
+                            <h6>Plate method</h6>
+                            <p>
+                                The plate method helps you control your portion sizes. You don’t need to count calories. 
+                                The plate method shows the amount of each food group you should eat. This method works best for lunch and dinner.
+                                <br><br>
+                                Use a 9-inch plate. Put nonstarchy vegetables on half of the plate; a meat or other protein on one-fourth of the plate; 
+                                and a grain or other starch on the last one-fourth. Starches include starchy vegetables such as corn and peas. 
+                                You also may eat a small bowl of fruit or a piece of fruit, and drink a small glass of milk as included in your meal plan. 
+                                Your daily eating plan also may include small snacks between meals.
+                            </p>
+                            <b>Portion sizes</b>
+                            <ol style="list-style-type:disc;">
+                                <li>
+                                    You can use everyday objects or your hand to judge the size of a portion.
+                                </li>
+                                <li>
+                                    1 serving of meat or poultry is the palm of your hand or a deck of cards
+                                </li>
+                                <li>
+                                    1 3-ounce serving of fish is a checkbook
+                                </li>
+                                <li>
+                                    1 serving of cheese is six dice
+                                </li>
+                                <li>
+                                    1/2 cup of cooked rice or pasta is a rounded handful or a tennis ball
+                                </li>
+                                <li>
+                                    1 serving of a pancake or waffle is a DVD
+                                </li>
+                                <li>
+                                    2 tablespoons of peanut butter is a ping-pong ball
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <h6>Carbohydrate counting</h6>
+                            <p>
+                                Carbohydrate counting involves keeping track of the amount of carbohydrates you eat and drink each day. 
+                                Because carbohydrates turn into glucose in your body, they affect your blood glucose level more than other foods do. 
+                                Carb counting can help you manage your blood glucose level. If you take insulin, 
+                                counting carbohydrates can help you know how much insulin to take.
+                                <br><br>
+                                Carbohydrate counting is a meal planning tool for people with diabetes who take insulin, but not all people with diabetes need to count carbohydrates. 
+                                Your health care team can help you create a personal eating plan that will best meet your needs.
+                                <br><br>
+                                The amount of carbohydrates in foods is measured in grams. To count carbohydrate grams in what you eat, you’ll need to
+                                <ol style="list-style-type:disc;"> 
+                                    <li>
+                                        learn which foods have carbohydrates
+                                    </li>
+                                    <li>
+                                        read the Nutrition Facts food label, or learn to estimate the number of grams of carbohydrate in the foods you eat
+                                    </li>
+                                    <li>
+                                        add the grams of carbohydrate from each food you eat to get your total for each meal and for the day
+                                    </li>
+                                </ol>
+                                <br>
+                                Most carbohydrates come from starches, fruits, milk, and sweets. Try to limit carbohydrates with added sugars or those with refined grains, such as white bread and white rice.
+                                Instead, eat carbohydrates from fruit, vegetables, whole grains, beans, and low-fat or nonfat milk.
+                            </p>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+        <br>
+        <div>
+            <h5>Why should I be physically active if I have diabetes?</h5>
+            <p>
+                Physical activity is an important part of managing your blood glucose level and staying healthy. 
+                Being active has many health benefits.
+            </p>
+            <ol style="list-style-type:disc;">
+                <li>
+                    lowers blood glucose levels
+                </li>
+                <li>
+                    lowers blood pressure
+                </li>
+                <li>
+                    improves blood flow
+                </li>
+                <li>
+                    burns extra calories so you can keep your weight down if needed
+                </li>
+                <li>
+                    improves your mood
+                </li>
+                <li>
+                    can prevent falls and improve memory in older adults
+                </li>
+                <li>
+                    may help you sleep better
+                </li>
+            </ol>
+            <p>
+                If you are overweight, combining physical activity with a reduced-calorie eating plan can lead to even more benefits. 
+                In the Look AHEAD: Action for Health in Diabetes study,1 overweight adults with type 2 diabetes who ate less and 
+                moved more had greater long-term health benefits compared to those who didn’t make these changes. 
+                These benefits included improved cholesterol levels, less sleep apnea, and being able to move around more easily.
+                <br><br>
+                Even small amounts of physical activity can help. Experts suggest that you aim for at least 30 minutes of moderate or 
+                vigorous physical activity 5 days of the week. Moderate activity feels somewhat hard, 
+                and vigorous activity is intense and feels hard. If you want to lose weight or maintain weight loss, 
+                you may need to do 60 minutes or more of physical activity 5 days of the week. 
+                Be patient. It may take a few weeks of physical activity before you see changes in your health.
+            </p>
+        </div>
+
+        <div>
+            <h5>How can I be physically active safely if I have diabetes?</h5>
+            <p>
+                Be sure to drink water before, during, and after exercise to stay well hydrated. 
+                The following are some other tips for safe physical activity when you have diabetes.
+            </p>
+            <ol style="list-style-type:none;">
+                <li>
+                    <h6>Prevent low blood glucose</h6>
+                    <p>
+                        Because physical activity lowers your blood glucose, you should protect yourself against low blood glucose levels, 
+                        also called hypoglycemia. You are most likely to have hypoglycemia if you take insulin or certain other diabetes medicines,
+                        such as a sulfonylurea. Hypoglycemia also can occur after a long intense workout or if you have skipped a meal before being active. 
+                        Hypoglycemia can happen during or up to 24 hours after physical activity.
+                        <br><br>
+                        Planning is key to preventing hypoglycemia. For instance, if you take insulin, 
+                        your health care provider might suggest you take less insulin or eat a small snack with carbohydrates before,
+                        during, or after physical activity, especially intense activity.
+                        <br><br>
+                        You may need to check your blood glucose level before, during, and right after you are physically active.
+                    </p>
+                </li>
+                <li>
+                    <h6>Take care of your feet</h6>
+                    <p>
+                        People with diabetes may have problems with their feet because of poor blood flow and nerve damage that can result from high blood glucose levels. 
+                        To help prevent foot problems, you should wear comfortable, supportive shoes and take care of your feet before, 
+                        during, and after physical activity.
+                    </p>
+                </li>
+            </ol>
+        </div>
+
+        <div>
+            <h5>What physical activities should I do if I have diabetes?</h5>
+            <p>
+                Most kinds of physical activity can help you take care of your diabetes. Certain activities may be unsafe for some people, 
+                such as those with low vision or nerve damage to their feet. Ask your health care team what physical activities are safe for you. 
+                Many people choose walking with friends or family members for their activity. 
+                <br><br>
+                Doing different types of physical activity each week will give you the most health benefits. 
+                Mixing it up also helps reduce boredom and lower your chance of getting hurt. Try these options for physical activity.
+
+                <ol style="list-style-type:none;">
+                    <li>
+                        <h6>Add extra activity to your daily routine</h6>
+                        <p>
+                            If you have been inactive or you are trying a new activity, start slowly, with 5 to 10 minutes a day. 
+                            Then add a little more time each week. Increase daily activity by spending less time in front of a TV or other screen. 
+                            Try these simple ways to add physical activities in your life each day:
+                        </p>
+                        <ol style="list-style-type:disc;">
+                            <li>
+                                Walk around while you talk on the phone or during TV commercials.
+                            </li>
+                            <li>
+                                Do chores, such as work in the garden, rake leaves, clean the house, or wash the car.
+                            </li>
+                            <li>
+                                Park at the far end of the shopping center parking lot and walk to the store.
+                            </li>
+                            <li>
+                                Take the stairs instead of the elevator.
+                            </li>
+                            <li>
+                                Make your family outings active, such as a family bike ride or a walk in a park.
+                            </li>
+                        </ol>
+                        <p>
+                            If you are sitting for a long time, such as working at a desk or watching TV, 
+                            do some light activity for 3 minutes or more every half hour. Light activities include:
+                            <ol style="list-style-type:disc;">
+                                <li>
+                                    leg lifts or extensions
+                                </li>
+                                <li>
+                                    overhead arm stretches
+                                </li>
+                                <li>
+                                    desk chair swivels
+                                </li>
+                                <li>
+                                    torso twists
+                                </li>
+                                <li>
+                                    side lunges
+                                </li>
+                                <li>
+                                    walking in place
+                                </li>
+                            </ol>
+                        </p>
+                    </li>
+                    <li>
+                        <h6>Do Aerobic Axercise</h6>
+                        <p>
+                            Aerobic exercise is activity that makes your heart beat faster and makes you breathe harder. 
+                            You should aim for doing aerobic exercise for 30 minutes a day most days of the week. 
+                            You do not have to do all the activity at one time. You can split up these minutes into a few times throughout the day.
+                            <br><br>
+                            To get the most out of your activity, exercise at a moderate to vigorous level. Try
+                        </p>
+                        <ol style="list-style-type:disc;">
+                            <li>
+                                walking briskly or hiking
+                            </li>
+                            <li>
+                                climbing stairs
+                            </li>
+                            <li>
+                                swimming or a water-aerobics class
+                            </li>
+                            <li>
+                                dancing
+                            </li>
+                            <li>
+                                riding a bicycle or a stationary bicycle
+                            </li>
+                            <li>
+                                taking an exercise class
+                            </li>
+                            <li>
+                                playing basketball, tennis, or other sports
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <h6>Do strength training to build muscle</h6>
+                        <p>
+                            Strength training is a light or moderate physical activity that builds muscle and helps keep your bones healthy. 
+                            Strength training is important for both men and women. When you have more muscle and less body fat, 
+                            you’ll burn more calories. Burning more calories can help you lose and keep off extra weight.
+                            <br><br>
+                            You can do strength training with hand weights, elastic bands, or weight machines. 
+                            Try to do strength training two to three times a week. Start with a light weight. 
+                            Slowly increase the size of your weights as your muscles become stronger.
+                        </p>
+                    </li>
+                    <li>
+                        <h6>Do stretching exercises</h6>
+                        <p>
+                            Stretching exercises are light or moderate physical activity.
+                            When you stretch, you increase your flexibility, lower your stress, and help prevent sore muscles.
+                            <br><br>
+                            You can choose from many types of stretching exercises. Yoga is a type of stretching that focuses on your breathing and helps you relax. 
+                            Even if you have problems moving or balancing, certain types of yoga can help. For instance, 
+                            chair yoga has stretches you can do when sitting in a chair or holding onto a chair while standing. 
+                            Your health care team can suggest whether yoga is right for you.
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </div>
+
+    </div>
+    
+</body>
+</html>

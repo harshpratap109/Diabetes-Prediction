@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>Diabetes prediction</title>
+
+    <!-- CSS  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ysabeau&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <style>
+        body {
+            background-image: url('../static/image/health.png');
+            background-repeat: no-repeat;
+            background-size: 15%;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        table,tbody, th, td {
+          border: 1px solid;
+        }
+        table,tbody,th{
+            text-align: center;
+            background-color: #ee6e73;
+            color: white;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        table{
+            width: 50%;
+        } 
+        table tbody{
+            margin-left: 10px;
+        }
+        #index-banner{
+            margin-left: 10%;
+            margin-right: 10%;
+        }       
+        #index-banner>div>
+        h4{
+            font-weight: bold;
+            color: #012a33;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        ol li{
+            font-size: 18px;
+            font-family: 'Ysabeau', sans-serif;
+        }
+        p{
+            font-size: 18px;
+            font-family: 'Ysabeau', sans-serif;
+        }
+        h5{
+            font-weight: 600;
+            text-decoration: underline;
+            color: #330c0a;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        #Med>div>ol>div{
+            border: 5px double black;
+        }
+        table.about{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="red.lighten-2" role="navigation">
+        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Diabetes Prediction</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                <li><a href="{{url_for('pres')}}">Medicines & Treatments</a></li>
+                <li><a href="{{url_for('diet')}}">Diet & Exercise</a></li>
+            </ul>
+    </nav>
+    
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <!-- <h5 style="text-align: center; color: brown; font-weight: 600;"></h5> -->
+            <h3 style="font-family: 'Cormorant Garamond', serif;" class="header center orange-text">Insulin, Medicines, & Other Diabetes Treatments </h3>
+        </div>
+        <br>
+        <div>
+            <h4>Types of Diabetes</h4>
+            <p>There are a few different types of diabetes:</p>
+            <ol style="list-style-type:disc;">
+                <li>
+                    <b>Type 1:</b> Type 1 diabetes is an autoimmune disease. The immune system attacks and destroys cells in the pancreas, 
+                    where insulin is made. It’s unclear what causes this attack.
+                </li>
+                <li>
+                    <b>Type 2:</b> Type 2 diabetes occurs when your body becomes resistant to insulin, and sugar builds up in your blood. 
+                    It’s the most common type—about 90% to 95%Trusted Source of people living with diabetes have type 2.
+                </li>
+                <li>
+                    <b>Type 1.5:</b> Type 1.5 diabetes is also known as latent autoimmune diabetes in adults (LADA). 
+                    It occurs during adulthood and sets in gradually like type 2 diabetes. 
+                    LADA is an autoimmune disease that cannot be treated by diet or lifestyle.
+                </li>
+                <li>
+                    <b>Gestational:</b> Gestational diabetes is high blood sugar during pregnancy. 
+                    Insulin-blocking hormones produced by the placenta cause this type of diabetes.
+                </li>
+            </ol>
+        </div>
+
+        <div>
+            <h4>Diabetes Risk Factors</h4>
+            <p>Certain factors increase your risk for diabetes.</p>
+            <div>
+                <ol style="list-style-type:disc;">
+                    <li>
+                        <h5>Type 1 diabetes</h5>
+                        <p>
+                            You’re more likely to get type 1 diabetes if you’re a child or teenager, 
+                            you have a parent or sibling with the condition, or you carry certain genes that are linked to the disease.
+                        </p>
+                    </li>
+                </ol>
+            </div>
+            <div>
+                <ol style="list-style-type:disc;">
+                    <li>
+                        <h5>Type 2 diabetes</h5>
+                        <p>Your risk for type 2 diabetes increases if you:</p>
+                        <ol style="list-style-type:disc;">
+                            <li>
+                                are overweight
+                            </li>
+                            <li>
+                                have a parent or sibling with the condition
+                            </li>
+                            <li>
+                                aren’t physically active
+                            </li>
+                            <li>
+                                have had gestational diabetes
+                            </li>
+                            <li>
+                                have prediabetes
+                            </li>
+                            <li>
+                                have high blood pressure, high cholesterol, or high triglycerides
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+            <div>
+                <ol style="list-style-type:disc;">
+                    <li>
+                        <h5>Type 1.5 diabetes</h5>
+                        <p>
+                            Type 1.5 diabetes is found in adults over 30 and is often mistaken for type 2, 
+                            but people with this condition are not necessarily overweight, and oral medications and lifestyle changes have no effect.
+                        </p>
+                    </li>
+                </ol>
+            </div>
+            <div>
+                <ol style="list-style-type:disc;">
+                    <li>
+                        <h5>
+                            Gestational diabetes
+                        </h5>
+                        <p>
+                            Your risk for gestational diabetes increases if you:
+                        </p>
+                        <ol style="list-style-type:disc;">
+                            <li>
+                                are overweight
+                            </li>
+                            <li>
+                                are over age 25
+                            </li>
+                            <li>
+                                had gestational diabetes during a past pregnancy
+                            </li>
+                            <li>
+                                have given birth to a baby weighing more than 9 pounds
+                            </li>
+                            <li>
+                                have a family history of type 2 diabetes
+                            </li>
+                            <li>
+                                have polycystic ovary syndrome (PCOS)
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div>
+            <h4>Insulin</h4>
+            <p>
+                Several types of insulin are available. Each type starts to work at a different speed, known as “onset,” 
+                and its effects last a different length of time, known as “duration.” Most types of insulin reach a peak, 
+                which is when they have the strongest effect. After the peak, the effects of the insulin wear off over the next few hours or so. 
+                Lists the different types of insulin, how fast they start to work, when they peak, and how long they last. <br>
+                <br>Types of insulin and how they work:
+            </p>
+            <ol style="list-style-type:disc;">
+                <li>
+                    <h5>Rapid-Acting Insulin:</h5>
+                    <ul>
+                        <li>
+                            When It Starts Working: 10–15 minutes
+                        </li>
+                        <li>
+                            When It Works Hardest: 30–90 minutes
+                        </li>
+                        <li>
+                            How Long It Lasts: 4 hours
+                        </li>
+                        <li>
+                            How It Works: This type is used to help your body handle glucose that you absorb when eating a meal.  
+                            It works best if you take it several minutes before or right before eating, but it can also be taken just after eating. 
+                            It looks clear and can be mixed with other types of insulin.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h5>Short-Acting Insulin:</h5>
+                    <ul>
+                        <li>
+                            When It Starts Working: 30–60 minutes
+                        </li>
+                        <li>
+                            When It Works Hardest: 2–4 hours
+                        </li>
+                        <li>
+                            How Long It Lasts: 6–9 hours
+                        </li>
+                        <li>
+                            How It Works: This type is also used to help your body handle glucose that you absorb when eating a meal, 
+                            but it lasts longer than rapid-acting insulin. You should take it 30 minutes before eating. 
+                            It looks clear and can be mixed with other types of insulin.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h5>Intermediate-Acting Insulin</h5>
+                    <ul>
+                        <li>
+                            When It Starts Working: 1–4 hours
+                        </li>
+                        <li>
+                            When It Works Hardest: 3–14 hours
+                        </li>
+                        <li>
+                            How Long It Lasts: 10–24 hours
+                        </li>
+                        <li>
+                            How It Works: This type works to control glucose between meals and during the night. 
+                            It looks cloudy and can be mixed with other types of insulin.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h5>Long-Acting Insulin</h5>
+                    <ul>
+                        <li>
+                            When It Starts Working: long-acting
+                        </li>
+                        <li>
+                            When It Works Hardest: long-acting
+                        </li>
+                        <li>
+                            How Long It Lasts: 18–24 hours
+                        </li>
+                        <li>
+                            How It Works: This type works to control glucose between meals and during the night.
+                            It looks cloudy or clear and can't be mixed with other types of insulin.
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+                
+
+        <div id="Med">
+            <h4>Medicines</h4>
+            <p>
+                These medicines are most often used to treat type 2 diabetes. The brand names and other names are
+                given for each medicine. There are also some tips about each kind of diabetes medicine.
+                Ask your healthcare provider to tell you the best way to take your medicines. They can
+                also tell you about your medicine’s side effects and warnings. This guide does not give 
+                all side effects or warnings for each medicine.
+            </p>
+            <div>
+                <ol style="list-style-type: none;">
+                    <div>
+                        <li>
+                            <h5>Meglitinides</h5>
+                            <p>
+                                <b>How do they work?</b> These pills help your body make more insulin around mealtime.
+                            </p>
+                            <div>
+                                <table class="about">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                BRAND NAME
+                                            </th>
+                                            <th>
+                                                OTHER NAME
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Prandin
+                                            </td>
+                                            <td>
+                                                repaglinide
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Starlix
+                                            </td>
+                                            <td>
+                                                nateglinide
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p>
+                                <b>Some Things to Think About</b> <br> Before you start taking these medicines,
+                                tell your healthcare provider if:
+                                <ol style="list-style-type:disc;">
+                                    <li>
+                                        you have liver or kidney problems.
+                                    </li>
+                                    <li>
+                                        you are pregnant or breastfeeding.
+                                    </li>
+                                </ol>
+                                <br>
+                                <b>Common Side Effects</b>
+                                <ol style="list-style-type:disc;">
+                                    <br>
+                                    <li>
+                                        Hypoglycemia (blood sugar that istoo low)
+                                    </li> 
+                                </ol>
+                            </p>
+                        </li>
+                    </div>
+                    <br>
+                    <div>
+                        <li>
+                            <h5>Alpha-Glucosidase Inhibitors</h5>
+                            <p>
+                                <b>How do they work?</b> These pills help your body digest sugar more slowly.
+                            </p>
+                            <div>
+                                <table class="about">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                BRAND NAME
+                                            </th>
+                                            <th>
+                                                OTHER NAME
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Glyset
+                                            </td>
+                                            <td>
+                                                miglitol
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Precose
+                                            </td>
+                                            <td>
+                                                acarbose
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p>
+                                <b>Some Things to Think About</b> <br> Before you start taking these medicines, tell
+                                your healthcare provider if:
+                                <ol style="list-style-type:disc;">
+                                    <li>
+                                        you have heart, liver, or kidney problems.
+                                    </li>
+                                    <li>
+                                        you are pregnant or breastfeeding.
+                                    </li>
+                                </ol>
+                                <p>
+                                    These medicines are not likely to cause low blood sugar or weight gain.
+                                </p>
+                                <b>Common Side Effects</b>
+                                <ol style="list-style-type:disc;">
+                                    <br>
+                                    <li>
+                                        Stomach Pain
+                                    </li>
+                                    <li>
+                                        Gas
+                                    </li> 
+                                    <li>
+                                        Abnormal Liver Tests
+                                    </li>
+                                </ol>
+                            </p>
+                        </li>
+                    </div>
+                    <br>
+                    <div>
+                        <li>
+                            <h5>Thiazolidinediones</h5>
+                            <p>
+                                <b>How do they work?</b> These pills help the cells in your body use glucose.
+                            </p>
+                            <div>
+                                <table class="about">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                BRAND NAME
+                                            </th>
+                                            <th>
+                                                OTHER NAME
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Actos
+                                            </td>
+                                            <td>
+                                                pioglitazone
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Avandia
+                                            </td>
+                                            <td>
+                                                rosiglitazone
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p>
+                                <b>Some Things to Think About</b>
+                                <ol style="list-style-type:disc;">
+                                    <li>
+                                        Before you start taking these medicines, tell your doctor if you have 
+                                        heart problems or heart failure
+                                    </li>
+                                    <li>
+                                        These medicines may raise your chance of having a broken bone (fracture).
+                                    </li>
+                                    <li>
+                                        Before you take Actos, tell your doctor if you are a premenopausal woman 
+                                        (before the “change of life”) who does not have periods regularly or at all. Actos 
+                                        may increase your chance of becoming pregnant. Talk to your doctor about birth 
+                                        control choices while taking Actos.
+                                    </li>
+                                </ol>
+                                <br>
+                                <b>Common Side Effects</b>
+                                <ol style="list-style-type:disc;">
+                                    <br>
+                                    <li>
+                                        Fluid Retention
+                                    </li>
+                                    <li>
+                                        Heart Failure (heart cannot pumpblood well)
+                                    </li> 
+                                    <li>
+                                        Anemia (low red blood cell counts)
+                                    </li>
+                                    <li>
+                                        Upper Respiratory Tract Infection
+                                    </li>
+                                </ol>
+                            </p>
+                        </li>
+                    </div>
+                    <br>
+                    <div>
+                        <li>
+                            <h5>
+                                DPP- 4 Inhibitors
+                            </h5>
+                            <p>
+                                <b>How do they work?</b> These pills help your body release more insulin.
+                            </p>
+                            <div>
+                                <table class="about">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                BRAND NAME
+                                            </th>
+                                            <th>
+                                                OTHER NAME
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Januvia
+                                            </td>
+                                            <td>
+                                                sitagliptin
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Onglyza
+                                            </td>
+                                            <td>
+                                                saxagliptin
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Nesina
+                                            </td>
+                                            <td>
+                                                alogliptin
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Tradjenta
+                                            </td>
+                                            <td>
+                                                linagliptin
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p>
+                                <b>Some Things to Think About</b>
+                                <ol style="list-style-type:disc;">
+                                    <li>
+                                        Call your doctor right away if you have severe stomach pain or vomiting. 
+                                        This may be a sign of a serious side effect.
+                                    </li>
+                                </ol>
+                                <br>
+                                <b>Common Side Effects</b>
+                                <ol style="list-style-type:disc;">
+                                    <br>
+                                    <li>
+                                        Upper Respiratory Infection
+                                    </li>
+                                    <li>
+                                        Headache
+                                    </li> 
+                                </ol>
+                            </p>
+                        </li>
+                    </div>
+                    <br>
+                    <div>
+                        <li>
+                            <h5>SGLT2 Inhibitors</h5>
+                            <p>
+                                <b>How do they work?</b> These pills affect the kidney to increase the amount of
+                                sugar that goes out in the urine.
+                            </p>
+                            <div>
+                                <table class="about">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                BRAND NAME
+                                            </th>
+                                            <th>
+                                                OTHER NAME
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Farxiga
+                                            </td>
+                                            <td>
+                                                dapagliflozin
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Invokana
+                                            </td>
+                                            <td>
+                                                canagliflozin
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Jardiance
+                                            </td>
+                                            <td>
+                                                empagliflozin
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Steglatro
+                                            </td>
+                                            <td>
+                                                ertugliflozin
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p>
+                                <b>Some Things to Think About</b>
+                                <ol style="list-style-type:disc;">
+                                    <li>
+                                        Do not take these drugs if you have severe kidney problems or are on dialysis.
+                                    </li>
+                                    <li>
+                                        Before you take these drugs, tell your doctor if you have kidney or liver problems.
+                                    </li>
+                                </ol>
+                                <br>
+                                <b>Common Side Effects</b>
+                                <ol style="list-style-type:disc;">
+                                    <br>
+                                    <li>
+                                        Vaginal Yeast Infections 
+                                    </li>
+                                    <li>
+                                        Urinary Tract Infections 
+                                    </li> 
+                                    <li>
+                                        Changes in Urination
+                                    </li>
+                                </ol>
+                            </p>
+                        </li>
+                    </div>
+                    <br>
+                    <div>
+                        <li>
+                            <h5>
+                                Biguanides
+                            </h5>
+                            <p>
+                                <b>How do they work?</b> These pills stop your
+                                liver from making too much sugar (glucose).
+                                They also help the sugar get into your cells.
+                            </p>
+                            <div>
+                                <table class="about">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                BRAND NAME
+                                            </th>
+                                            <th>
+                                                OTHER NAME
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Fortamet
+                                            </td>
+                                            <td>
+                                                metformin
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Glucophage
+                                            </td>
+                                            <td>
+                                                metformin
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Glucophage XR(long-lasting extended release)
+                                            </td>
+                                            <td>
+                                                metformin
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Glumetza
+                                            </td>
+                                            <td>
+                                                metformin
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Riomet
+                                            </td>
+                                            <td>
+                                                metformin
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p>
+                                <b>Some Things to Think About</b>
+                                <ol style="list-style-type:disc;">
+                                    <li>
+                                        Talk to your doctor about your kidney health before you start and while you
+                                        are taking this type of medicine
+                                    </li>
+                                    <li>
+                                        These medicines are not likely to cause low blood sugar or weight gain.
+                                    </li>
+                                    <li>
+                                        People who drink a lot of alcohol and people with kidney problems may have 
+                                        a rare side effect called lactic acidosis (acid build up in the blood).
+                                    </li>
+                                </ol>
+                                <br>
+                                <b>Common Side Effects</b>
+                                <ol style="list-style-type:disc;">
+                                    <br>
+                                    <li>
+                                        Diarrhea
+                                    </li>
+                                    <li>
+                                        Feeling Weak
+                                    </li> 
+                                    <li>
+                                        Nausea/Vomiting
+                                    </li>
+                                </ol>
+                            </p>
+                        </li>
+                    </div>
+                </ol>            
+            </div>
+        </div>
+
+
+    </div>
+    
+</body>
+</html>

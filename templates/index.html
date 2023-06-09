@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>Diabetes prediction</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+
+    <style>
+        body {
+            background-image: url('../static/image/health.png');
+            background-repeat: no-repeat;
+            background-size: 15%;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+    <!--background-attachment: fixed;-->
+
+
+</head>
+
+
+
+<body>
+
+    <nav class="red.lighten-2" role="navigation">
+        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Diabetes Prediction</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#">Home</a></li>
+            </ul>
+    </nav>
+
+
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <h5 style="text-align: center; color: brown; font-weight: 600;"></h5>
+            <h1 class="header center orange-text">Diabetes Prediction</h1>
+            <div class="row center">
+                <h5 class="header col s12 light">Predict the probability of having Diabetes<br></h5>
+                <h6 class="header col s12 light">Enter the details below<br></h6>
+            </div>
+
+            <div class="row">
+                <form action='/predict' method="post" class="col s12">
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <label for="Pregnancies"><b>Pregnancies</b></label>
+                            <br>
+                            <input placeholder="No. of Pregnancies" name="Pregnancies" id="Pregnancies" type="text"
+                                class="validate" required="True">
+                        </div>
+
+                        <div class="input-field col s4">
+                            <label for="Glucose"><b>Glucose </b></label>
+                            <br>
+                            <input id="Glucose" name="Glucose" placeholder="Glucose level in sugar" type="text"
+                                class="validate" required="True">
+                        </div>
+
+                        <div class="input-field col s4">
+                            <label for="BloodPressure"><b>BloodPressure</b></label>
+                            <br>
+                            <input id="BloodPressure" name="BloodPressure" placeholder="BloodPressure" type="text"
+                                class="validate" required="True">
+                        </div>
+
+                        <div class="input-field col s4">
+                            <label for="SkinThickness"><b>SkinThickness</b></label>
+                            <br>
+                            <input placeholder="SkinThickness" name="SkinThickness" id="SkinThickness" type="text"
+                                class="validate" required="True">
+                        </div>
+
+                        <div class="input-field col s4">
+                            <label for="Insulin"><b>Insulin</b></label>
+                            <br>
+                            <input id="Insulin" name="Insulin" placeholder="Insulin level" type="text" class="validate"
+                                required="True">
+                        </div>
+
+                        <div class="input-field col s4">
+                            <label><b>BMI</b></label>
+                            <br>
+                            <input name='BMI' placeholder="Body Mass Index (between 10 to 40)" required="True">
+                        </div>
+
+                        <div class="input-field col s4">
+                            <label for="DiabetesPedigreeFunction"><b>DiabetesPedigreeFunction</b></label>
+                            <br>
+                            <input id="DiabetesPedigreeFunction" name="DiabetesPedigreeFunction"
+                                placeholder="DiabetesPedigreeFunction (between 0 and 1)" type="text" class="validate"
+                                required="True">
+                        </div>
+
+                        <div class="input-field col s4">
+                            <label for="Age"><b>Age</b></label>
+                            <br>
+                            <input id="Age" name="Age" placeholder="Age" type="text" class="validate" required="True">
+                        </div>
+
+                    </div>
+
+
+                    <div class="row center">
+                        <button type="submit" class="btn-large waves-effect waves-light orange">Predict</button>
+                    </div>
+                </form>
+            </div>
+            <!-- <br> -->
+            <div style="text-align: center;
+            font-size: 24px;
+            color: green;
+            font-weight: 700;
+            margin-bottom: 20px;"> {{ prediction_text }} </div>
+            <div style="text-align: center;">
+                <button style="height: 50px;
+                margin-bottom: 30px;
+                background-color: white;
+                border: none;
+                border-radius: 3px;
+                padding: 0px 25px;">
+                    <a style="color: #330c0a;
+                    font-size: 20px;
+                    font-weight: bolder;" 
+                    href="{{url_for('pres')}}">{{prescription_text}}</a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- <script src="../static/js/materialize.js"></script> -->
+
+
+</body>
+
+</html>
